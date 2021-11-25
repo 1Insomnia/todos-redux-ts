@@ -8,6 +8,9 @@ export default function TodoList() {
 
   return (
     <div className="space-y-6">
+      <h2 className="text-4xl font-bold tracking-tighter text-center mb-10">
+        List
+      </h2>
       {todos.map((todo, index) => (
         <TodoItem
           key={todo.id}

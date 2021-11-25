@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { getTodos, saveTodos } from "../utils/getTodos";
 
 interface Todo {
   id: string;
@@ -20,7 +21,7 @@ interface RemoveTodo {
 }
 
 const initialState: TodosState = {
-  value: [],
+  value: getTodos(),
 };
 
 export const todosSlice = createSlice({
@@ -29,18 +30,21 @@ export const todosSlice = createSlice({
   reducers: {
     addTodo: (state, action: PayloadAction<Todo>) => {
       state.value.push(action.payload);
+      saveTodos(state.value);
     },
     completeTodo: (state, action: PayloadAction<CompleteTodo>) => {
       const index = state.value.findIndex(
         (item) => item.id === action.payload.id
       );
       state.value[index].status = action.payload.status;
+      saveTodos(state.value);
     },
     removeTodo: (state, action: PayloadAction<RemoveTodo>) => {
       const index = state.value.findIndex(
         (item) => item.id === action.payload.id
       );
       state.value.splice(index, 1);
+      saveTodos(state.value);
     },
   },
 });

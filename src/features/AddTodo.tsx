@@ -11,7 +11,6 @@ export default function AddTodo() {
 
   const handleClick = () => {
     if (input.length <= 0) return;
-    console.log(input);
     dispatch(
       addTodo({
         id: uuidv4(),

@@ -2,15 +2,6 @@ import React from "react";
 import { removeTodo, completeTodo } from "./todosSlice";
 import { useDispatch } from "react-redux";
 
-interface CompleteTodo {
-  id: string;
-  status: boolean;
-}
-
-interface RemoveTodo {
-  id: string;
-}
-
 export default function TodoItem({
   id,
   content,
